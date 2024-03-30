@@ -68,7 +68,7 @@ const btnDark = document.getElementById('btnDark');
 function changeMode() {
   if (this.checked) {
     document.body.style.backgroundColor = '#121212';
-    img.src = `/imgDarkmode.svg`;
+    img.src = `imgDarkmode.svg`;
   } else {
     document.body.style.backgroundColor = '#fff';
     img.src = `undraw_season_change_f99v.svg`;
