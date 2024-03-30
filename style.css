@@ -11,3 +11,16 @@ section {
 .card {
   padding: 20px 50px;
 }
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.desenho {
+  display: flex;
+
+  & img {
+    margin: 0 auto;
+  }
+}
