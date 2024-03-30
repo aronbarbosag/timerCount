@@ -30,7 +30,7 @@ function iniciarTimer(event) {
     horario.segundos += 1;
     if (horario.segundos === 60) {
       horario.segundos = 0;
-      horario.segundos += 1;
+      horario.minutos += 1;
     }
     if (horario.minutos === 60) {
       horario.minutos = 0;
