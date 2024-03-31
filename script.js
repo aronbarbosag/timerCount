@@ -21,7 +21,7 @@ function habilitarBtn() {
 
 function iniciarTimer(event) {
   event.preventDefault();
-
+  timer.classList.remove('pausado');
   desabilitarBtn();
   inicioTimer = setInterval(() => {
     timer.innerHTML = `${zeroEsquerda(horario.horas)}:${zeroEsquerda(
@@ -41,7 +41,7 @@ function iniciarTimer(event) {
 
 function pausarTimer(event) {
   event.preventDefault();
-
+  timer.classList.add('pausado');
   clearInterval(inicioTimer);
   habilitarBtn();
 }
@@ -67,12 +67,30 @@ const btnDark = document.getElementById('btnDark');
 
 function changeMode() {
   if (this.checked) {
-    document.body.style.backgroundColor = '#121212';
-    img.src = `imgDarkmode.svg`;
+    document.body.setAttribute('data-mode', 'dark');
+
+    img.src = `imgdarkmode.svg`;
   } else {
-    document.body.style.backgroundColor = '#fff';
-    img.src = `undraw_season_change_f99v.svg`;
+    document.body.setAttribute('data-mode', 'light');
+
+    img.src = `imglightmode.svg`;
   }
+  salvarDados();
 }
 
 btnDark.addEventListener('change', changeMode);
+
+function salvarDados() {
+  const modoSalvo = document.body.getAttribute('data-mode');
+
+  localStorage.setItem('mode', modoSalvo);
+}
+
+function atualizarDados() {
+  const key = localStorage.getItem('mode');
+
+  document.body.setAttribute('data-mode', key);
+  img.src = `img${key}mode.svg`;
+  btnDark.checked = key === 'dark' ? true : false;
+}
+atualizarDados();
