@@ -87,9 +87,11 @@ function salvarDados() {
 }
 
 function atualizarDados() {
-  const key = localStorage.getItem('mode');
+  let key = localStorage.getItem('mode');
 
   document.body.setAttribute('data-mode', key);
+  key = key || 'light';
+  console.log(key);
   img.src = `img${key}mode.svg`;
   btnDark.checked = key === 'dark' ? true : false;
 }
